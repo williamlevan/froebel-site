@@ -1,0 +1,34 @@
+{
+  "name": "froebel-site",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@types/react-calendar": "^3.9.0",
+    "connect-redis": "^9.0.0",
+    "express-session": "^1.18.2",
+    "mongo": "^0.1.0",
+    "next": "^14.2.32",
+    "react": "^18",
+    "react-calendar": "^6.0.0",
+    "react-dom": "^18",
+    "redis": "^5.8.2",
+    "resend": "^6.1.0",
+    "sass": "^1.91.0"
+  },
+  "devDependencies": {
+    "@types/connect-redis": "^0.0.23",
+    "@types/express-session": "^1.18.2",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4",
+    "typescript": "^5"
+  }
+}

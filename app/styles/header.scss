@@ -1,0 +1,65 @@
+$froebel-white: #ffffff;
+$froebel-blue: #1B489B;
+$froebel-yellow: #FEC41F;
+$froebel-red: #D11149;
+
+.header {
+  background-color: $froebel-white;
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .site-title {
+    color: $froebel-blue;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .sign-in-button {
+    background-color: $froebel-yellow;
+    color: #000;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: darken($froebel-yellow, 10%);
+    }
+  }
+}
+
+.profile-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: $froebel-blue;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: darken($froebel-blue, 10%);
+  }
+
+  .profile-icon {
+    font-size: 1rem;
+  }
+
+  .profile-name {
+    font-size: 0.9rem;
+  }
+}

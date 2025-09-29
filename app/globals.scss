@@ -1,0 +1,33 @@
+// Froebel Brand Colors
+$froebel-white: #ffffff;
+$froebel-blue: #1B489B;
+$froebel-yellow: #FEC41F;
+$froebel-red: #D11149;
+$froebel-black: #050505;
+
+:root {
+  --foreground-color: #{$froebel-black};
+  --background-color: #{$froebel-blue};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-color: #{$froebel-white};
+    --background-color: #{$froebel-white};
+  }
+}
+
+body {
+  color: var(--foreground-color);
+  background: var(--background-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Utility classes
+.text-balance {
+  text-wrap: balance;
+}

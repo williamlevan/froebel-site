@@ -1,0 +1,215 @@
+// Import the variables from globals.scss or define them
+$froebel-blue: #007bff; // Add this line at the top
+
+.account-page {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+  }
+  
+  .account-main {
+    padding: 2rem 1rem;
+    min-height: calc(100vh - 80px);
+  }
+  
+  .account-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .account-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+  }
+  
+  .account-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+  
+  .account-info {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e9ecef;
+  
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+  
+      label {
+        font-weight: 500;
+        color: #666;
+      }
+  
+      .info-value {
+        color: #333;
+        font-weight: 500;
+      }
+    }
+  }
+  
+  .account-form {
+    margin-bottom: 2rem;
+  
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+  
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+  
+    .form-group {
+      display: flex;
+      flex-direction: column;
+  
+      label {
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: #333;
+      }
+  
+      input {
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+        transition: border-color 0.2s;
+  
+        &:focus {
+          outline: none;
+          border-color: $froebel-blue;
+          box-shadow: 0 0 0 2px rgba($froebel-blue, 0.25);
+        }
+  
+        &:disabled {
+          background-color: #f8f9fa;
+          color: #6c757d;
+          cursor: not-allowed;
+        }
+      }
+    }
+  
+    .message {
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+  
+      &.success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+  
+      &.error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+    }
+  
+    .form-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+    }
+  }
+  
+  .account-actions {
+    padding-top: 2rem;
+    border-top: 1px solid #e9ecef;
+    text-align: center;
+  }
+  
+  .edit-button {
+    background-color: $froebel-blue;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  
+    &:hover {
+      background-color: darken($froebel-blue, 10%);
+    }
+  }
+  
+  .save-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  
+    &:hover:not(:disabled) {
+      background-color: darken(#28a745, 10%);
+    }
+  
+    &:disabled {
+      background-color: #6c757d;
+      cursor: not-allowed;
+    }
+  }
+  
+  .cancel-button {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  
+    &:hover:not(:disabled) {
+      background-color: darken(#6c757d, 10%);
+    }
+  
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+  
+  .logout-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  
+    &:hover {
+      background-color: darken(#dc3545, 10%);
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .form-row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  
+    .form-actions {
+      flex-direction: column;
+    }
+  }
