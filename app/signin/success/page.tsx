@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Header from '../../components/header';
 import '../../styles/signin.scss';
 
-export default function SignInSuccessPage() {
+function SignInSuccessContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const email = searchParams.get('email');
@@ -125,5 +125,13 @@ export default function SignInSuccessPage() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function SignInSuccessPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SignInSuccessContent />
+    </Suspense>
   );
 }
