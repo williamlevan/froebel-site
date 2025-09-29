@@ -3,6 +3,9 @@ import { magicLinks } from '../../../lib/magic-links';
 import { findUserByEmail, updateUserLastLogin } from '../../../lib/users';
 import { SessionManager } from '../../../lib/session';
 
+// Force this route to be dynamic
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
