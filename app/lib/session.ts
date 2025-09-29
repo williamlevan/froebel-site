@@ -1,18 +1,11 @@
-import { createClient } from 'redis';
+import clientPromise from './mongodb';
 import { NextRequest } from 'next/server';
-
-const redis = createClient({
-  url: process.env.REDIS_URL || 'redis://localhost:6379'
-});
-
-redis.on('error', (err) => console.error('Redis Client Error', err));
-redis.connect();
 
 export interface SessionData {
   userId: string;
   email: string;
-  firstName: string;
-  lastName: string;
+  firstName?: string;
+  lastName?: string;
   role: string;
 }
 
@@ -23,62 +16,66 @@ export class SessionManager {
 
   static async createSession(userData: SessionData): Promise<string> {
     const sessionId = this.generateSessionId();
-    const sessionKey = `session:${sessionId}`;
+    const client = await clientPromise;
+    const db = client.db('sessions');
+    const sessions = db.collection('sessions');
     
-    await redis.setEx(sessionKey, 7 * 24 * 60 * 60, JSON.stringify(userData)); // 7 days
+    await sessions.insertOne({
+      sessionId,
+      userData,
+      createdAt: new Date(),
+      expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7 days
+    });
+    
     return sessionId;
   }
 
   static async getSession(sessionId: string): Promise<SessionData | null> {
     try {
-      const sessionKey = `session:${sessionId}`;
-      const sessionData = await redis.get(sessionKey);
-      return sessionData ? JSON.parse(sessionData) : null;
+      const client = await clientPromise;
+      const db = client.db('sessions');
+      const sessions = db.collection('sessions');
+      
+      const session = await sessions.findOne({
+        sessionId,
+        expiresAt: { $gt: new Date() }
+      });
+      
+      return session ? session.userData : null;
     } catch (error) {
       console.error('Error getting session:', error);
       return null;
     }
   }
 
-  static async updateSession(sessionId: string, userData: Partial<SessionData>): Promise<boolean> {
+  static async extendSession(sessionId: string): Promise<void> {
     try {
-      const sessionKey = `session:${sessionId}`;
-      const existingData = await this.getSession(sessionId);
+      const client = await clientPromise;
+      const db = client.db('sessions');
+      const sessions = db.collection('sessions');
       
-      if (!existingData) return false;
-      
-      const updatedData = { ...existingData, ...userData };
-      await redis.setEx(sessionKey, 7 * 24 * 60 * 60, JSON.stringify(updatedData));
-      return true;
-    } catch (error) {
-      console.error('Error updating session:', error);
-      return false;
-    }
-  }
-
-  static async deleteSession(sessionId: string): Promise<boolean> {
-    try {
-      const sessionKey = `session:${sessionId}`;
-      await redis.del(sessionKey);
-      return true;
-    } catch (error) {
-      console.error('Error deleting session:', error);
-      return false;
-    }
-  }
-
-  static async extendSession(sessionId: string): Promise<boolean> {
-    try {
-      const sessionKey = `session:${sessionId}`;
-      const sessionData = await this.getSession(sessionId);
-      
-      if (!sessionData) return false;
-      
-      await redis.setEx(sessionKey, 7 * 24 * 60 * 60, JSON.stringify(sessionData));
-      return true;
+      await sessions.updateOne(
+        { sessionId },
+        { 
+          $set: { 
+            expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7 days
+          } 
+        }
+      );
     } catch (error) {
       console.error('Error extending session:', error);
-      return false;
+    }
+  }
+
+  static async deleteSession(sessionId: string): Promise<void> {
+    try {
+      const client = await clientPromise;
+      const db = client.db('sessions');
+      const sessions = db.collection('sessions');
+      
+      await sessions.deleteOne({ sessionId });
+    } catch (error) {
+      console.error('Error deleting session:', error);
     }
   }
 }
