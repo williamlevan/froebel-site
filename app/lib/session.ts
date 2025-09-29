@@ -67,6 +67,40 @@ export class SessionManager {
     }
   }
 
+  static async updateSession(sessionId: string, updates: Partial<SessionData>): Promise<void> {
+    try {
+      const client = await clientPromise;
+      const db = client.db('sessions');
+      const sessions = db.collection('sessions');
+      
+      // Get the current session
+      const session = await sessions.findOne({
+        sessionId,
+        expiresAt: { $gt: new Date() }
+      });
+      
+      if (session) {
+        // Update the userData with the new information
+        const updatedUserData = {
+          ...session.userData,
+          ...updates
+        };
+        
+        await sessions.updateOne(
+          { sessionId },
+          { 
+            $set: { 
+              userData: updatedUserData,
+              expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7 days
+            } 
+          }
+        );
+      }
+    } catch (error) {
+      console.error('Error updating session:', error);
+    }
+  }
+
   static async deleteSession(sessionId: string): Promise<void> {
     try {
       const client = await clientPromise;
