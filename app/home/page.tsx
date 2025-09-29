@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Header from '../components/header';
 import ShiftList from '../components/ShiftList';
@@ -33,7 +33,7 @@ interface PaginationInfo {
   hasPrev: boolean;
 }
 
-export default function HomePage() {
+function HomePageContent() {
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [shifts, setShifts] = useState<GroupedShifts>({});
   const [pagination, setPagination] = useState<PaginationInfo>({
@@ -476,5 +476,13 @@ export default function HomePage() {
         {/* Content for the footer */}
       </footer>
     </div>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HomePageContent />
+    </Suspense>
   );
 }
