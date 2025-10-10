@@ -273,7 +273,7 @@ function HomePageContent() {
 
           <div className="content-container">
             {/* here i want to display image IMG_3783.jpg */}
-            <Image src="/images/IMG_3783.jpg" alt="Froebel School" className="intro-image" width={800} height={529} />
+            <Image src="/images/IMG_3783.JPG" alt="Froebel School" className="intro-image" width={800} height={529} />
             <div className="intro-section">
               <p className="intro-text-large">
                 <strong>Want to learn more about Froebel School volunteering opportunities?{' '}</strong>

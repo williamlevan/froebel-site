@@ -18,7 +18,7 @@ export default function SchoolInfoPage() {
           </div>
 
           <div className="content-container">
-            <Image src="/images/IMG_3779.jpg" alt="Froebel School" width={800} height={533} />
+            <Image src="/images/IMG_3779.JPG" alt="Froebel School" width={800} height={533} />
 
             <div className="map-container">
               <iframe
