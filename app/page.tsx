@@ -7,6 +7,7 @@ import { useSession } from './hooks/useSession';
 import Link from 'next/link';
 import Image from 'next/image';
 import Header from './components/header';
+import { ClipLoader } from 'react-spinners';
 import './styles/index.scss';
 
 interface Shift {
@@ -50,6 +51,9 @@ function HomePageContent() {
 
   const searchParams = useSearchParams();
   const { user, loading: sessionLoading } = useSession();
+
+  // Combined loading state - show loading until both session and shifts are loaded
+  const isPageLoading = loading || sessionLoading;
 
   const [schoolFormData, setSchoolFormData] = useState({
     firstName: '',
@@ -239,8 +243,16 @@ function HomePageContent() {
     return isPast || isWeekend || isBlackedOut;
   };
 
-  if (sessionLoading) {
-    return <div>Loading...</div>;
+  // Show loading overlay until everything is loaded
+  if (isPageLoading) {
+    return (
+      <div className="loading-overlay">
+        <div className="loading-content">
+          <ClipLoader color="#1B489B" />
+          <p className="loading-text">Loading Froebel School Volunteer Site...</p>
+        </div>
+      </div>
+    );
   }
 
   return (

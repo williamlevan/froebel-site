@@ -14,6 +14,7 @@ export default function Header() {
   const isSignInPage = pathname === '/signin' || pathname.startsWith('/signin/');
 
   const navItems = [
+    { href: '/', label: 'Home' },
     { href: '/volunteering', label: 'Volunteering' },
     { href: '/school-info', label: 'Location, Info and History' },
     { href: '/about', label: 'About Us' },
