@@ -15,8 +15,8 @@ export default function Footer() {
             <li><Link href="/volunteering">Volunteering</Link></li>
             <li><Link href="/school-info">School Information</Link></li>
             <li><Link href="/policies-and-guidelines">Policies & Guidelines</Link></li>
-            <li><Link href="/portal">Portal</Link></li>
-            <li><Link href="/forms">Forms</Link></li>
+            {/* <li><Link href="/portal">Portal</Link></li> */}
+            {/* <li><Link href="/forms">Forms</Link></li> */}
           </ul>
         </div>
 
