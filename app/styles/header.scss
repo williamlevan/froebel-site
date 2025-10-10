@@ -7,9 +7,15 @@ $froebel-red: #D11149;
   background-color: $froebel-white;
   padding: 1rem 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 
   .header-content {
-    max-width: 1400px;
+    // max-width: 1400px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 0 2rem;
     display: flex;
@@ -21,6 +27,176 @@ $froebel-red: #D11149;
     color: $froebel-blue;
     font-size: 1.25rem;
     font-weight: 600;
+
+    a {
+      text-decoration: none;
+      color: $froebel-blue;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .header-nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+
+    .nav-link {
+      color: $froebel-blue;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      transition: all 0.2s;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &.active {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  // Mobile menu button
+  .mobile-menu-button {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      width: 24px;
+      height: 18px;
+      justify-content: space-between;
+
+      span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: $froebel-blue;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+        transform-origin: center;
+      }
+
+      &.open {
+        span:nth-child(1) {
+          transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        span:nth-child(2) {
+          opacity: 0;
+        }
+
+        span:nth-child(3) {
+          transform: rotate(-45deg) translate(6px, -6px);
+        }
+      }
+    }
+  }
+
+  // Mobile navigation
+  .mobile-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: $froebel-white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+
+    &.open {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .mobile-nav-content {
+      padding: 1rem 2rem;
+
+      .mobile-nav-link {
+        display: block;
+        color: $froebel-blue;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba($froebel-blue, 0.1);
+        transition: all 0.2s;
+
+        &:hover {
+          color: $froebel-yellow;
+        }
+
+        &.active {
+          color: $froebel-yellow;
+          font-weight: 600;
+        }
+
+        &:last-of-type {
+          border-bottom: none;
+        }
+      }
+
+      .mobile-nav-auth {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba($froebel-blue, 0.1);
+
+        .mobile-profile-button {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          background-color: $froebel-blue;
+          color: white;
+          padding: 0.75rem 1rem;
+          border-radius: 0.5rem;
+          text-decoration: none;
+          font-weight: 500;
+          transition: background-color 0.2s;
+          margin-bottom: 0.5rem;
+
+          &:hover {
+            background-color: darken($froebel-blue, 10%);
+          }
+
+          .profile-icon {
+            font-size: 1rem;
+          }
+
+          .profile-name {
+            font-size: 0.9rem;
+          }
+        }
+
+        .mobile-sign-in-button {
+          display: block;
+          background-color: $froebel-yellow;
+          color: #000;
+          border: none;
+          padding: 0.75rem 1rem;
+          border-radius: 0.5rem;
+          font-weight: 600;
+          text-decoration: none;
+          text-align: center;
+          transition: background-color 0.2s;
+
+          &:hover {
+            background-color: darken($froebel-yellow, 10%);
+          }
+        }
+      }
+    }
   }
 
   .sign-in-button {
@@ -61,5 +237,61 @@ $froebel-red: #D11149;
 
   .profile-name {
     font-size: 0.9rem;
+  }
+}
+
+// Responsive design for mobile
+@media (max-width: 768px) {
+  .header {
+    .header-content {
+      padding: 0 1rem;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+    }
+
+    .site-title {
+      font-size: 1rem;
+      flex: 1;
+      text-align: left;
+    }
+
+    // Hide desktop navigation on mobile
+    .desktop-nav {
+      display: none !important;
+    }
+
+    // Show mobile menu button
+    .mobile-menu-button {
+      display: block !important;
+      margin-left: auto;
+    }
+
+    // Show mobile navigation
+    .mobile-nav {
+      display: block;
+    }
+  }
+}
+
+// Responsive design for tablet
+@media (max-width: 1024px) and (min-width: 769px) {
+  .header {
+    .header-content {
+      padding: 0 1.5rem;
+    }
+
+    .site-title {
+      font-size: 1.1rem;
+    }
+
+    .header-nav {
+      gap: 1rem;
+
+      .nav-link {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
+      }
+    }
   }
 }

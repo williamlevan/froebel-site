@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Header from '../components/header';
 import ShiftList from '../components/ShiftList';
 import { useSession } from '../hooks/useSession';
-import '../styles/home.scss';
+import '../styles/portal.scss';
 
 interface Shift {
   _id: string;
@@ -245,6 +245,7 @@ function HomePageContent() {
     <div className="home-page">
       {/* Header */}
       <Header />
+      <div className="header-padding"></div>
 
       {/* Success Snackbar */}
       {showSnackbar && user && (
@@ -286,11 +287,11 @@ function HomePageContent() {
             </p>
             <br />
             <p className="how-to-volunteer-text">
-              To volunteer, you must fill out [NAME OF FORMS] forms. <span className="highlight">If you are under 18</span>, you must download the following forms, complete them, and send a PDF to anndillon@gmail.com. <span className="italicize">1 week is required to process these forms.</span> <span className="highlight">NOTE:</span> If you are renewing your application, you <span className="highlight">do not</span> need a reference.
+              To volunteer, you must fill out [NAME OF FORMS] forms. <span className="highlight">If you are under 18</span>, you must download the following forms, complete them, and send a PDF to <a href="mailto:anndillon@gmail.com">anndillon@gmail.com</a>. <span className="italicize">1 week is required to process these forms.</span> <span className="highlight">NOTE:</span> If you are renewing your application, you <span className="highlight">do not</span> need a reference.
             </p>
             <br />
             <p className="how-to-volunteer-text">
-              <span className="highlight">If you are 18 or older</span>, you must complete the online application here. <span className="italicize">3 weeks is required to process these applications.</span> For instructions, go here. For any question, please email anndillon@gmail.com.
+              <span className="highlight">If you are 18 or older</span>, you must complete the online application here. <span className="italicize">3 weeks is required to process these applications.</span> For instructions, go here. For any question, please email <a href="mailto:anndillon@gmail.com">anndillon@gmail.com</a>.
             </p>
           </div>
         </section>
@@ -470,11 +471,6 @@ function HomePageContent() {
           </div>
         </section>
       </main>
-
-      {/* Footer */}
-      <footer className="footer">
-        {/* Content for the footer */}
-      </footer>
     </div>
   );
 }

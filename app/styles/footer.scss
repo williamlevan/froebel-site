@@ -1,0 +1,131 @@
+$froebel-white: #ffffff;
+$froebel-blue: #1B489B;
+$froebel-yellow: #FEC41F;
+$froebel-red: #D11149;
+
+.footer {
+  background-color: $froebel-blue;
+  color: white;
+  padding: 3rem 0 1rem 0;
+  margin-top: 4rem;
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+
+    .footer-section {
+      h3 {
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid $froebel-yellow;
+        padding-bottom: 0.5rem;
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          margin-bottom: 0.5rem;
+
+          a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.2s;
+
+            &:hover {
+              color: $froebel-yellow;
+            }
+          }
+        }
+      }
+
+      .contact-info,
+      .school-info {
+        p {
+          margin: 0.5rem 0;
+          font-size: 1rem;
+          line-height: 1.4;
+
+          strong {
+            color: $froebel-yellow;
+          }
+
+          a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.2s;
+
+            &:hover {
+              color: $froebel-yellow;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 2rem auto 0 auto;
+    padding: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem 0 1rem 0;
+
+    .footer-container {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 0 0.5rem;
+
+      .footer-section {
+        h3 {
+          font-size: 1.1rem;
+        }
+
+        .footer-links {
+          li {
+            a {
+              font-size: 0.95rem;
+            }
+          }
+        }
+
+        .contact-info,
+        .school-info {
+          p {
+            font-size: 0.95rem;
+          }
+        }
+      }
+    }
+
+    .footer-bottom {
+      padding: 1rem 0.5rem;
+
+      p {
+        font-size: 0.85rem;
+      }
+    }
+  }
+}

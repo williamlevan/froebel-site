@@ -1,0 +1,514 @@
+$froebel-white: #ffffff;
+$froebel-blue: #1B489B;
+$froebel-yellow: #FEC41F;
+$froebel-red: #D11149;
+
+.home-page {
+    min-height: 100vh;
+    background-color: #ffffff;
+
+    .header-padding {
+        height: 80px;
+        width: 100%;
+        background-color: $froebel-blue;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+
+    .home-container {
+        max-width: 100%;
+
+        .page-title-container {
+            max-width: 100%;
+            margin: 0 auto 2rem auto;
+            padding: 0 1rem;
+            background-color: $froebel-blue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            h1 {
+                max-width: 1200px;
+                font-size: 2.5rem;
+                color: white;
+                padding: 3rem 0;
+                text-align: center;
+                font-weight: 700;
+                line-height: 1.2;
+                margin: 0;
+            }
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .intro-section {
+                margin: 2rem 0;
+
+                .intro-text-large {
+                    margin: 0 0 1rem 0;
+                    color: #555;
+                    font-size: 1.5rem;
+                }
+
+                .intro-text-small {
+                    margin: 0 0 1rem 0;
+                    color: #555;
+                    font-size: 1.1rem;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+
+                .volunteer-link {
+                    color: #1B489B;
+                    text-decoration: none;
+                    font-weight: 600;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+
+                .contact-link {
+                    color: #1B489B;
+                    text-decoration: none;
+                    font-weight: 600;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            .container {
+                width: 100%;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                color: black;
+                font-size: 1.8rem;
+            }
+
+            // Volunteer School Section (Form)
+            .volunteer-school-section {
+                margin-bottom: 4rem;
+                width: 100%;
+                max-width: 800px;
+
+                .volunteer-form {
+                    width: 100%;
+                    background-color: #f9fafb;
+                    padding: 2rem;
+                    border-radius: 0.5rem;
+                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+                    .form-grid {
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 1.5rem;
+                        margin-bottom: 1.5rem;
+
+                        @media (max-width: 768px) {
+                            grid-template-columns: 1fr;
+                        }
+                    }
+
+                    .form-group {
+                        display: flex;
+                        flex-direction: column;
+
+                        &.full-width {
+                            grid-column: 1 / -1;
+                        }
+
+                        label {
+                            font-weight: 600;
+                            color: #374151;
+                            margin-bottom: 0.5rem;
+                        }
+
+                        input,
+                        select,
+                        textarea {
+                            padding: 0.75rem;
+                            border: 1px solid #d1d5db;
+                            border-radius: 0.375rem;
+                            font-size: 1rem;
+                            transition: border-color 0.2s;
+
+                            &:focus {
+                                outline: none;
+                                border-color: #3b82f6;
+                                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+                            }
+                        }
+
+                        textarea {
+                            min-height: 120px;
+                            resize: vertical;
+                        }
+
+                        .input-with-icon {
+                            position: relative;
+
+                            .icon {
+                                position: absolute;
+                                right: 0.75rem;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                font-size: 1.25rem;
+                            }
+                        }
+                    }
+
+                    .continue-button {
+                        background-color: #fbbf24;
+                        color: #000;
+                        border: none;
+                        padding: 1rem 2rem;
+                        border-radius: 0.5rem;
+                        font-weight: 600;
+                        font-size: 1.125rem;
+                        cursor: pointer;
+                        transition: background-color 0.2s;
+                        width: 100%;
+                        margin-top: 1rem;
+
+                        &:hover {
+                            background-color: #f59e0b;
+                        }
+                    }
+                }
+            }
+
+            // Volunteer Warehouse Section
+            .volunteer-warehouse-section {
+                .filters-pagination {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 2rem;
+                    flex-wrap: wrap;
+                    gap: 1rem;
+
+                    .filters {
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+                        flex-wrap: wrap;
+
+                        span {
+                            font-weight: 600;
+                            color: #374151;
+                        }
+
+                        select {
+                            padding: 0.5rem;
+                            border: 1px solid #d1d5db;
+                            border-radius: 0.375rem;
+                            background-color: white;
+                        }
+
+                        .input-with-icon {
+                            position: relative;
+
+                            input {
+                                padding: 0.5rem 2rem 0.5rem 0.75rem;
+                                border: 1px solid #d1d5db;
+                                border-radius: 0.375rem;
+                            }
+
+                            .icon {
+                                position: absolute;
+                                right: 0.5rem;
+                                top: 50%;
+                                transform: translateY(-50%);
+                            }
+                        }
+
+                        .clear-link {
+                            color: #3b82f6;
+                            text-decoration: none;
+                            font-weight: 500;
+
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+
+                    .pagination-per-page {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+
+                        select {
+                            padding: 0.5rem;
+                            border: 1px solid #d1d5db;
+                            border-radius: 0.375rem;
+                            background-color: white;
+                        }
+
+                        span {
+                            color: #6b7280;
+                        }
+                    }
+                }
+
+                .event-list {
+                    margin-bottom: 2rem;
+
+                    .event-date-header {
+                        font-size: 1.25rem;
+                        font-weight: 700;
+                        color: #111827;
+                        margin: 2rem 0 1rem 0;
+                        text-transform: uppercase;
+                        letter-spacing: 0.05em;
+                    }
+
+                    .event-card {
+                        display: flex;
+                        background-color: white;
+                        border: 1px solid #e5e7eb;
+                        border-radius: 0.5rem;
+                        margin-bottom: 1rem;
+                        overflow: hidden;
+                        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+                        .event-card-left-bar {
+                            width: 4px;
+                            background-color: #3b82f6;
+                        }
+
+                        .event-card-content {
+                            flex: 1;
+                            padding: 1.5rem;
+
+                            .event-card-header {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: flex-start;
+                                margin-bottom: 1rem;
+
+                                .event-title {
+                                    font-size: 1.25rem;
+                                    font-weight: 600;
+                                    color: #111827;
+                                }
+
+                                .event-time-tag {
+                                    background-color: #3b82f6;
+                                    color: white;
+                                    padding: 0.25rem 0.75rem;
+                                    border-radius: 0.375rem;
+                                    font-size: 0.875rem;
+                                    font-weight: 500;
+                                }
+                            }
+
+                            .event-details {
+                                margin-bottom: 1rem;
+
+                                p {
+                                    margin-bottom: 0.5rem;
+                                    color: #6b7280;
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 0.5rem;
+
+                                    .icon {
+                                        font-size: 1rem;
+                                    }
+                                }
+                            }
+
+                            .event-description {
+                                color: #6b7280;
+                                line-height: 1.6;
+                            }
+                        }
+
+                        .event-card-actions {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.5rem;
+                            padding: 1.5rem;
+                            justify-content: flex-start;
+
+                            .sign-up-button {
+                                background-color: #fbbf24;
+                                color: #000;
+                                border: none;
+                                padding: 0.75rem 1.5rem;
+                                border-radius: 0.375rem;
+                                font-weight: 600;
+                                cursor: pointer;
+                                transition: background-color 0.2s;
+                                white-space: nowrap;
+
+                                &:hover {
+                                    background-color: #f59e0b;
+                                }
+                            }
+
+                            .see-more-button {
+                                background-color: white;
+                                color: #3b82f6;
+                                border: 1px solid #3b82f6;
+                                padding: 0.75rem 1.5rem;
+                                border-radius: 0.375rem;
+                                font-weight: 600;
+                                cursor: pointer;
+                                transition: all 0.2s;
+                                white-space: nowrap;
+
+                                &:hover {
+                                    background-color: #3b82f6;
+                                    color: white;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .bottom-pagination {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 0.5rem;
+                    margin-top: 2rem;
+
+                    .pagination-arrow,
+                    .pagination-number {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 2.5rem;
+                        height: 2.5rem;
+                        border-radius: 50%;
+                        text-decoration: none;
+                        font-weight: 600;
+                        transition: all 0.2s;
+                    }
+
+                    .pagination-arrow {
+                        color: #6b7280;
+                        background-color: #f3f4f6;
+
+                        &:hover {
+                            background-color: #e5e7eb;
+                        }
+                    }
+
+                    .pagination-number {
+                        color: #6b7280;
+                        background-color: #f3f4f6;
+
+                        &:hover {
+                            background-color: #e5e7eb;
+                        }
+
+                        &.active {
+                            background-color: #3b82f6;
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+    .home-page {
+        .home-container {
+            .content-container {
+                padding: 0 0.5rem;
+
+                .intro-section {
+                    padding: 1rem 0;
+                }
+
+                .volunteer-school-section {
+                    width: 100%;
+                    margin-bottom: 2rem;
+
+                    .volunteer-form {
+                        padding: 1rem;
+                    }
+                }
+
+                .volunteer-warehouse-section {
+                    .filters-pagination {
+                        flex-direction: column;
+                        align-items: stretch;
+                        gap: 1rem;
+
+                        .filters {
+                            justify-content: center;
+                            flex-wrap: wrap;
+                        }
+
+                        .pagination-per-page {
+                            justify-content: center;
+                        }
+                    }
+
+                    .event-list {
+                        .event-card {
+                            flex-direction: column;
+
+                            .event-card-content {
+                                padding: 1rem;
+                            }
+
+                            .event-card-actions {
+                                padding: 1rem;
+                                flex-direction: row;
+                                justify-content: center;
+                                gap: 0.5rem;
+
+                                .sign-up-button,
+                                .see-more-button {
+                                    flex: 1;
+                                    text-align: center;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .intro-section,
+    .opportunities-section {
+        padding: 1rem;
+    }
+
+    .intro-text,
+    .opportunities-text {
+        font-size: 1rem;
+    }
+}

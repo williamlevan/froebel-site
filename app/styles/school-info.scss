@@ -1,0 +1,148 @@
+$froebel-white: #ffffff;
+$froebel-blue: #1B489B;
+$froebel-yellow: #FEC41F;
+$froebel-red: #D11149;
+
+.school-info-page {
+  min-height: 100vh;
+  background-color: #ffffff;
+
+  .header-padding {
+    height: 80px;
+    width: 100%;
+    background-color: $froebel-blue;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  .school-info-container {
+    max-width: 100%;
+
+    .page-title-container {
+      max-width: 100%;
+      margin: 0 auto 2rem auto;
+      padding: 2rem 1rem;
+      background-color: $froebel-blue;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      h1 {
+        max-width: 1200px;
+        font-size: 2.5rem;
+        color: white;
+        padding: 1rem 0;
+        text-align: center;
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 0;
+      }
+    }
+
+    .content-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      line-height: 1.6;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .map-container {
+        width: 100%;
+        margin: 2rem 0;
+        padding: 1rem;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+
+        .map-container-text {
+          margin: 2rem 0 1rem 0;
+
+          p {
+            color: black;
+            font-weight: 600;
+            margin: 0.5rem 0;
+          }
+        }
+
+        iframe {
+          border-radius: 4px;
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      .info-container {
+        width: 100%;
+
+        p {
+          color: #555;
+          margin: 1rem 0;
+        }
+
+        h4 {
+          color: #555;
+          font-weight: 500;
+          margin: 1rem 0 0 0;
+        }
+
+        .highlighted {
+          color: $froebel-blue;
+          font-weight: 700;
+          margin: 1rem 0 0 0;
+        }
+
+        .info-header {
+          border-bottom: 2px solid $froebel-blue;
+          width: 100%;
+          margin: 1rem 0;
+
+          h1 {
+            color: black;
+            margin: 0;
+          }
+        }
+
+        .stats-container {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+          width: 100%;
+          justify-content: center;
+
+          .stat {
+            width: 200px;
+            height: 120px;
+            background-color: $froebel-blue;
+            border-radius: 20px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            p {
+              color: white;
+              margin: 0;
+              letter-spacing: 0.05rem;
+            }
+
+            h4 {
+              color: white;
+              margin: 0;
+              letter-spacing: 0.05rem;
+              font-size: 1.4rem;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}

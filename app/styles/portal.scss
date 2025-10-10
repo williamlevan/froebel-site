@@ -19,6 +19,16 @@ body {
   min-height: 100vh;
   background-color: #fff;
 
+  .header-padding {
+    height: 80px;
+    width: 100%;
+    background-color: $froebel-blue;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
   .container {
     max-width: 1400px;
     margin: 0 auto;
@@ -27,7 +37,7 @@ body {
 
   // About Section
   .about-section {
-    background-color: #1e3a8a;
+    background-color: $froebel-blue;
     padding: 2rem 0;
     text-align: center;
 
@@ -416,6 +426,105 @@ body {
     background-color: #1e3a8a;
     height: 4rem;
     margin-top: 4rem;
+  }
+}
+
+// Responsive design for mobile
+@media (max-width: 768px) {
+  .home-page {
+    .container {
+      padding: 0 1rem;
+    }
+
+    .about-section {
+      padding: 1rem 0;
+
+      .about-title {
+        font-size: 1.5rem;
+      }
+
+      .about-description {
+        font-size: 0.9rem;
+      }
+    }
+
+    .main-content {
+      padding: 2rem 0;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+    }
+
+    .how-to-volunteer-section {
+      margin-bottom: 2rem;
+
+      .how-to-volunteer-text {
+        font-size: 1rem;
+        padding: 0 1rem;
+      }
+    }
+
+    .volunteer-school-section {
+      margin-bottom: 2rem;
+
+      .volunteer-form {
+        padding: 1rem;
+        margin: 0 1rem;
+      }
+    }
+
+    .volunteer-warehouse-section {
+      .filters-pagination {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+        margin-bottom: 1rem;
+
+        .filters {
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .pagination-per-page {
+          justify-content: center;
+        }
+      }
+
+      .event-list {
+        .event-card {
+          flex-direction: column;
+
+          .event-card-content {
+            padding: 1rem;
+          }
+
+          .event-card-actions {
+            padding: 1rem;
+            flex-direction: row;
+            justify-content: center;
+            gap: 0.5rem;
+
+            .sign-up-button,
+            .see-more-button {
+              flex: 1;
+              text-align: center;
+            }
+          }
+        }
+      }
+
+      .bottom-pagination {
+        gap: 0.25rem;
+
+        .pagination-arrow,
+        .pagination-number {
+          width: 2rem;
+          height: 2rem;
+          font-size: 0.8rem;
+        }
+      }
+    }
   }
 }
 
